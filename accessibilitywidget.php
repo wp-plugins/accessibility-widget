@@ -4,7 +4,7 @@ Plugin Name: Accessibility Widget
 Plugin URI: http://webgrrrl.net/archives/accessibility-widget-revived.htm
 Description: Adds a sidebar widget to enlarge text size in your WP site. Originally created by Tane of Digital Spaghetti (http://www.tripcastradio.com/) and revived by Lorna of WebGrrrl.net.
 Author: Lorna Timbah
-Version: 0.9
+Version: 1.0
 Author URI: http://webgrrrl.net
 */
 
