@@ -3,7 +3,7 @@ Contributors: webgrrrl
 Tags: accessibility, widget, widgets, formatting, css, style, text, wcag
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,21 +26,26 @@ Adds a sidebar widget to change text size in your WP site. Future feature: chang
 
 = How do I use this plugin? =
 
-Follow the Installation instructions. For widgetized WordPress themes, as of version 1.1, you can set HTML or CSS tags that you want to resize, and the font sizes you want to use.
+Follow the Installation instructions. Below are options you can set in the widget:-
 
-Resize the following HTML/CSS tags: 
-Specify all the HTML or CSS tags you want to resize in this section. By default, the HTML tag body is set.
-Different WordPress theme may have different and unique stylesheet classes and IDs. You can switch on your browser’s built-in Developer Tools and use the Inspect Element option to detect what HTML/CSS codes to use.
+*Resize the following HTML/CSS tags:* 
+Specify all the HTML or CSS tags you want to resize in this section. By default, the HTML tag body, p, li and td is set.
+Different WordPress theme may have different and unique stylesheet classes and IDs. You can switch on your browser's built-in Developer Tools and use the Inspect Element option to detect what HTML/CSS codes to use.
 
-Set to these sizes: 
+*Set to these sizes:*
 This is where you set the font-size you want to enable for the users to use (read up on the CSS font-size property at W3Schools). The simplest font-size group you can use are smaller, inherit, larger.
-The number of letter “T” that appears in your widget depends on the number of font sizes you use. In my example above, since I use smaller, inherit, and larger, there will be three letter “T” and each letter will appear based on the font-size it is set for. If you set only two font-size, then only two letter T appears, and so forth.
+
+*Set controller text:*
+By default, the widget displays letter "T" that appears in your widget depending on the number of font sizes you use, that is if you set only two font-size, then only two letter T appears, and so forth. Starting with version 1.2., you can set it to use more meaningful words, like "Small, Normal, Large" for each size you specify.   
 
 = Can I use this on a non-widgetized website / theme? =
 
-Not tested, but theoretically yes, you can. Follow the Manual installation in the Installation section for details.
+Not tested, but theoretically yes, you can. Follow the Manual installation steps in the Installation section for details.
 
 == Changelog ==
+
+= 1.2 =
+* Added option to customise controller text, i.e. the words you click on to change the text size.
 
 = 1.1.1 =
 * Added HTML tags p, li and td options by default for first-time installation.

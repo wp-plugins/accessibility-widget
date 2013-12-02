@@ -4,7 +4,7 @@ Plugin Name: Accessibility Widget
 Plugin URI: http://webgrrrl.net/archives/accessibility-widget-revived.htm
 Description: Adds a sidebar widget to enlarge text size in your WP site. Originally created by Tane of Digital Spaghetti (http://www.tripcastradio.com/) and revived by Lorna of WebGrrrl.net.
 Author: Lorna Timbah
-Version: 1.1.1
+Version: 1.2
 Author URI: http://webgrrrl.net
 */
 class widget_accesstxt extends WP_Widget {
@@ -16,12 +16,13 @@ class widget_accesstxt extends WP_Widget {
   function widget($args, $instance) {
     extract( $args );
     $title = apply_filters('widget_title', $instance['title']);
-    $tags = str_replace(" ", "", $instance['tags']);             
-    $fontsize = str_replace(" ", "", $instance['fontsize']);
-    $afontsize = explode(",", $fontsize);
-    ?>
-    <?php echo $before_widget; ?>
-    <?php if ( $title ) echo $before_title . $title . $after_title;
+    $tags = str_replace(" ", "", $instance['tags']); // remove whitespaces             
+    $fontsize = str_replace(" ", "", $instance['fontsize']); // remove whitespaces
+    $afontsize = explode(",", $fontsize); // transform into arrays
+    $controls = explode(",", str_replace(" ", "", $instance['controls'])); // remove whitespaces then transform into arrays
+    
+    echo $before_widget;
+    if ( $title ) echo $before_title . $title . $after_title;
     ?>
     <script type="text/javascript">
 		//Specify affected tags. Add or remove from list
@@ -37,9 +38,7 @@ class widget_accesstxt extends WP_Widget {
 			if ( sz > 6 ) sz = 6;
 			startSz = sz;
 			if ( !( cEl = d.getElementById( trgt ) ) ) cEl = d.getElementsByTagName( trgt )[ 0 ];
-
 			cEl.style.fontSize = szs[ sz ];
-
 			for ( i = 0 ; i < tgs.length ; i++ ) {
 				cTags = cEl.getElementsByTagName( tgs[ i ] );
 				for ( j = 0 ; j < cTags.length ; j++ ) cTags[ j ].style.fontSize = szs[ sz ];
@@ -48,7 +47,10 @@ class widget_accesstxt extends WP_Widget {
 		</script>
     <ul>
       <li><?php
-      foreach ($afontsize as $key => $value) { echo "<a href=\"javascript:ts('body'," . $key . ")\" style=\"font-size:" . $value . "\">A</a>&nbsp;&nbsp;"; }
+      foreach ($afontsize as $key => $value) {
+        $controltext = count($controls) < 1 ? $controls[$key] : reset($controls);
+        echo "<a href=\"javascript:ts('body'," . $key . ")\" style=\"font-size:" . $value . "\">" . $controltext . "</a>&nbsp;&nbsp;";
+      }
       ?></li>
     </ul>
     <?php echo $after_widget; ?>
@@ -59,7 +61,8 @@ class widget_accesstxt extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['tags'] = strip_tags($new_instance['tags']);
-		$instance['fontsize'] = strip_tags($new_instance['fontsize']);
+		$instance['fontsize'] = strip_tags($new_instance['fontsize']);  
+		$instance['controls'] = strip_tags($new_instance['controls']);
     return $instance;
   }
   /** @see WP_Widget::form -- do not rename this */
@@ -67,6 +70,7 @@ class widget_accesstxt extends WP_Widget {
     $title = esc_attr($instance['title']);
     $tags = ($instance['tags'] == "" ? "body,p,li,td" : esc_attr($instance['tags']));
     $fontsize = ($instance['fontsize'] == "" ? "90%, 100%, 110%, 120%" : esc_attr($instance['fontsize']));
+    $controls = ($instance['controls'] == "" ? "T" : esc_attr($instance['controls']));
   ?>
   <p>
     <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
@@ -81,10 +85,14 @@ class widget_accesstxt extends WP_Widget {
     <label for="<?php echo $this->get_field_id('fontsize'); ?>"><?php _e('Set to these sizes:'); ?></label>
     <input class="widefat" id="<?php echo $this->get_field_id('fontsize'); ?>" name="<?php echo $this->get_field_name('fontsize'); ?>" type="text" value="<?php echo $fontsize; ?>" /><br />
     Separate each size with a comma (,)
-<?php echo count($fontsize); ?>
+  </p>
+  <p>
+    <label for="<?php echo $this->get_field_id('controls'); ?>"><?php _e('Set controller text:'); ?></label>
+    <input class="widefat" id="<?php echo $this->get_field_id('controls'); ?>" name="<?php echo $this->get_field_name('controls'); ?>" type="text" value="<?php echo $controls; ?>" /><br />
+    Separate each controller text with a comma (,)
   </p>
   <?php
   }
-} // end class example_widget
+} // end class widget_accesstxt
 add_action('widgets_init', create_function('', 'return register_widget("widget_accesstxt");'));
 ?>
