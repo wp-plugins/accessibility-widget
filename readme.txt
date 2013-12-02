@@ -2,8 +2,8 @@
 Contributors: webgrrrl
 Tags: accessibility, widget, widgets, formatting, css, style, text, wcag
 Requires at least: 3.0.1
-Tested up to: 3.6
-Stable tag: 1.1
+Tested up to: 3.7.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ The number of letter “T” that appears in your widget depends on the number of fo
 Not tested, but theoretically yes, you can. Follow the Manual installation in the Installation section for details.
 
 == Changelog ==
+
+= 1.1.1 =
+* Added HTML tags p, li and td options by default for first-time installation.
 
 = 1.1 =
 * Added options into the widget form for easy customisation.
