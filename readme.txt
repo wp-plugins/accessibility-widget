@@ -36,7 +36,7 @@ Different WordPress theme may have different and unique stylesheet classes and I
 This is where you set the font-size you want to enable for the users to use (read up on the CSS font-size property at W3Schools). The simplest font-size group you can use are smaller, inherit, larger.
 
 *Set controller text:*
-By default, the widget displays letter "T" that appears in your widget depending on the number of font sizes you use, that is if you set only two font-size, then only two letter T appears, and so forth. Starting with version 1.2., you can set it to use more meaningful words, like "Small, Normal, Large" for each size you specify.   
+By default, the widget displays the letter "T" depending on the number of font sizes you use; that is, if you set only two font-size, then only two letter T appears, and so forth. Starting with version 1.2, you can set it to use more meaningful words, like Small, Normal, Large for each size you specify.
 
 = Can I use this on a non-widgetized website / theme? =
 
