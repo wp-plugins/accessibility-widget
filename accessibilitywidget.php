@@ -48,8 +48,7 @@ class widget_accesstxt extends WP_Widget {
     <ul>
       <li><?php
       foreach ($afontsize as $key => $value) {
-        $controltext = count($controls) < 1 ? $controls[$key] : reset($controls);
-        echo "<a href=\"javascript:ts('body'," . $key . ")\" style=\"font-size:" . $value . "\">" . $controltext . "</a>&nbsp;&nbsp;";
+        echo "<a href=\"javascript:ts('body'," . $key . ")\" style=\"font-size:" . $value . "\">" . $controls[$key] . "</a>&nbsp;&nbsp;";
       }
       ?></li>
     </ul>
