@@ -4,7 +4,7 @@ Plugin Name: Accessibility Widget
 Plugin URI: http://webgrrrl.net/archives/accessibility-widget-revived.htm
 Description: Adds a sidebar widget to enlarge text size in your WP site. Originally created by Tane of Digital Spaghetti (http://www.tripcastradio.com/) and revived by Lorna of WebGrrrl.net.
 Author: Lorna Timbah
-Version: 1.2
+Version: 1.2.1
 Author URI: http://webgrrrl.net
 */
 class widget_accesstxt extends WP_Widget {
@@ -17,10 +17,8 @@ class widget_accesstxt extends WP_Widget {
     extract( $args );
     $title = apply_filters('widget_title', $instance['title']);
     $tags = str_replace(" ", "", $instance['tags']); // remove whitespaces             
-    $fontsize = str_replace(" ", "", $instance['fontsize']); // remove whitespaces
-    $afontsize = explode(",", $fontsize); // transform into arrays
-    $controls = explode(",", str_replace(" ", "", $instance['controls'])); // remove whitespaces then transform into arrays
-    
+    $fontsize = explode(",", str_replace(" ", "", $instance['fontsize'])); // remove whitespaces then transform into arrays
+    $controls = explode(",", str_replace(" ", "", $instance['controls'])); // remove whitespaces then transform into arrays   
     echo $before_widget;
     if ( $title ) echo $before_title . $title . $after_title;
     ?>
@@ -47,8 +45,10 @@ class widget_accesstxt extends WP_Widget {
 		</script>
     <ul>
       <li><?php
-      foreach ($afontsize as $key => $value) {
-        echo "<a href=\"javascript:ts('body'," . $key . ")\" style=\"font-size:" . $value . "\">" . $controls[$key] . "</a>&nbsp;&nbsp;";
+      $controlscount = count($controls);
+      foreach ($fontsize as $key => $value) {
+        $icontrols = ($controlscount > 1 ? $key : 0);
+        echo "<a href=\"javascript:ts('body'," . $key . ")\" style=\"font-size:" . $value . "\">" . $controls[$icontrols] . "</a>&nbsp;&nbsp;";
       }
       ?></li>
     </ul>

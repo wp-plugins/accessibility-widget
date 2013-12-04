@@ -3,7 +3,7 @@ Contributors: webgrrrl
 Tags: accessibility, widget, widgets, formatting, css, style, text, wcag
 Requires at least: 3.0.1
 Tested up to: 3.7.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ Adds a sidebar widget to change text size in your WP site. Future feature: chang
 
 Follow the Installation instructions. Below are options you can set in the widget:-
 
-*Resize the following HTML/CSS tags:* 
+*Resize the following HTML/CSS tags:*
 Specify all the HTML or CSS tags you want to resize in this section. By default, the HTML tag body, p, li and td is set.
 Different WordPress theme may have different and unique stylesheet classes and IDs. You can switch on your browser's built-in Developer Tools and use the Inspect Element option to detect what HTML/CSS codes to use.
 
@@ -43,6 +43,9 @@ By default, the widget displays the letter "T" depending on the number of font s
 Not tested, but theoretically yes, you can. Follow the Manual installation steps in the Installation section for details.
 
 == Changelog ==
+
+= 1.2.1 =
+* Debugged controller text to allow a single character/word or multiple character/word (but multiple characters MUST match the amount of font-size used).
 
 = 1.2 =
 * Added option to customise controller text, i.e. the words you click on to change the text size.
